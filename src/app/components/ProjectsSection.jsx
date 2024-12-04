@@ -7,57 +7,79 @@ import { motion, useInView } from "framer-motion";
 const projectsData = [
   {
     id: 1,
-    title: "React Portfolio Website",
-    description: "Project 1 description",
-    image: "/images/projects/1.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+    title: "CI/CD Pipeline Automation with Jenkins",
+    description: "Streamlined testing and deployment processes using Jenkins and Docker.",
+    image: "/images/jenkins.png",
+    tag: ["All", "DevOps"],
+    gitUrl: "https://github.com/siwar15/projet_foyer/tree/reservation-management",
+    previewUrl: "https://jenkins-project.example.com",
   },
   {
     id: 2,
-    title: "Potography Portfolio Website",
-    description: "Project 2 description",
-    image: "/images/projects/2.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+    title: "AWS Infrastructure Automation with Terraform",
+    description:
+      "Automated AWS deployments with Terraform and GitLab CI/CD, ensuring high availability and security.",
+    image: "/images/terraform.png",
+    tag: ["All", "Cloud"],
+    gitUrl: "https://gitlab.com/saadaoui.mouadh/mouaadhcicdtf.git",
+    previewUrl: "https://aws-automation.example.com",
+    tools: ["AWS", "Terraform", "GitLab CI/CD"],
   },
   {
     id: 3,
-    title: "E-commerce Application",
-    description: "Project 3 description",
-    image: "/images/projects/3.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+    title: "Private Cloud Deployment with OpenStack",
+    description:
+      "Architected a scalable private cloud using OpenStack and Kubernetes for microservices deployment.",
+    image: "/images/openstack.png",
+    tag: ["All", "Cloud"],
+    gitUrl: "https://github.com/siwar15/BackOfficeEduConnect.git",
+    
+    previewUrl: "https://openstack-cloud.example.com",
+    tools: ["OpenStack", "Kubernetes", "Microservices"],
   },
   {
     id: 4,
-    title: "Food Ordering Application",
-    description: "Project 4 description",
-    image: "/images/projects/4.png",
-    tag: ["All", "Mobile"],
-    gitUrl: "/",
-    previewUrl: "/",
+    title: "Monitoring and Alerting System with Prometheus & Grafana",
+    description:
+      "Designed real-time monitoring dashboards with Prometheus and Grafana for cloud environments.",
+    image: "/images/grafana.png",
+    tag: ["All", "DevOps"],
+    gitUrl: "https://github.com/MouadhSaadaoui/monitoring-alerting",
+    previewUrl: "https://monitoring-system.example.com",
+    tools: ["Prometheus", "Grafana", "Monitoring"],
   },
   {
     id: 5,
-    title: "React Firebase Template",
-    description: "Authentication and CRUD operations",
-    image: "/images/projects/5.png",
+    title: "E-learning Platform",
+    description:
+      "Developed an engaging platform using Laravel and MySQL, improving user engagement through automation.",
+    image: "/images/laravel.jpg",
     tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+    gitUrl: "https://github.com/MouadhSaadaoui/e-learning",
+    previewUrl: "https://e-learning.example.com",
+    tools: ["Laravel", "MySQL", "PHP"],
   },
   {
     id: 6,
-    title: "Full-stack Roadmap",
-    description: "Project 5 description",
-    image: "/images/projects/6.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+    title: "Demo App - Developing with Docker",
+    description:
+      "Built a secure user profile application with Docker Compose, MongoDB, and a Node.js backend. Implemented environment variables and best practices for enhanced security.",
+    image: "/images/docker.jpg", // Replace with your project's image path
+    tag: ["All", "DevOps"],
+    gitUrl: "https://gitlab.com/saadaoui.mouadh/my-nodejs-app-1-0.git", // Replace with your GitHub repo link
+    previewUrl: "http://localhost:3000", // Update if live preview is available
+    tools: ["Docker", "Node.js", "MongoDB", "Docker Compose"],
+  },
+  {
+    id: 7, // Increment the ID
+    title: "Kubernetes CI/CD Pipeline Automation with GCP",
+    description:
+      "Developed a CI/CD pipeline using Google Cloud Build, Jib for Docker image creation, and Kubernetes deployment with Helm. Automated deployment workflows and ensured application scalability.",
+    image: "/images/k8s.png", // Replace with your project's image path
+    tag: ["All", "DevOps"],
+    gitUrl: "https://gitlab.com/saadaoui.mouadh/spring-rest-pipeline-demo.git", // Replace with the GitHub link
+    previewUrl: "https://gcp-k8s.example.com", // Add the live preview link if available
+    tools: ["GCP", "Kubernetes", "Google Cloud Build", "Jib"],
   },
 ];
 
@@ -85,20 +107,25 @@ const ProjectsSection = () => {
         My Projects
       </h2>
       <div className="text-white flex flex-row justify-center items-center gap-2 py-6">
-        <ProjectTag
+      <ProjectTag
           onClick={handleTagChange}
           name="All"
           isSelected={tag === "All"}
         />
         <ProjectTag
           onClick={handleTagChange}
-          name="Web"
-          isSelected={tag === "Web"}
+          name="Cloud"
+          isSelected={tag === "Cloud"}
         />
         <ProjectTag
           onClick={handleTagChange}
-          name="Mobile"
-          isSelected={tag === "Mobile"}
+          name="DevOps"
+          isSelected={tag === "DevOps"}
+        />
+        <ProjectTag
+          onClick={handleTagChange}
+          name="Web"
+          isSelected={tag === "Web"}
         />
       </div>
       <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">

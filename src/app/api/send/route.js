@@ -1,28 +1,42 @@
-import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import { NextResponse } from 'next/server';
+import { Resend } from 'resend'; // Import Resend
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-const fromEmail = process.env.FROM_EMAIL;
+// Initialize Resend with your API key
+const resend = new Resend('re_iM8kD5Je_3s3pmVXuRdnq8qAWM9rQ987i'); // Replace with your Resend API key
 
-export async function POST(req, res) {
+const toEmail = 'saadaoui.mouadh@esprit.tn'; // The email address where you want to receive the message
+
+export async function POST(req) {
+  // Get form data from the request body
   const { email, subject, message } = await req.json();
-  console.log(email, subject, message);
+  console.log("Received data:", email, subject, message);
+
   try {
-    const data = await resend.emails.send({
-      from: fromEmail,
-      to: [fromEmail, email],
+    // Send the email using Resend API
+    const data = await resend.sendEmail({
+      from: email, // Use the sender's email address (dynamic)
+      to: [toEmail], // Send the email to your email address
       subject: subject,
-      react: (
-        <>
-          <h1>{subject}</h1>
-          <p>Thank you for contacting us!</p>
-          <p>New message submitted:</p>
-          <p>{message}</p>
-        </>
-      ),
+      html: `
+        <h1>${subject}</h1>
+        <p>New message submitted:</p>
+        <p>${message}</p>
+        <p>From: ${email}</p> <!-- Include the sender's email in the body -->
+      `, // Use HTML content instead of React JSX
     });
-    return NextResponse.json(data);
+
+    // Return a response indicating success
+    return NextResponse.json({ success: true, data });
   } catch (error) {
-    return NextResponse.json({ error });
+    console.error("Error sending email:", error);
+
+    // Return an error response
+    return NextResponse.json(
+      {
+        success: false,
+        error: error.message || "Failed to send email.",
+      },
+      { status: 500 } // Server error
+    );
   }
 }
