@@ -8,7 +8,7 @@ const QuoteSection = () => {
         <h2 className="text-white text-3xl font-bold text-center mb-4">
           The best thing about a boolean is even if you are wrong, you are only off by a bit.
         </h2>
-        <p className="text-[#ADB7BE] text-base text-center">- Anonymous</p>
+        <p className="text-[#ADB7BE] text-base text-center">&ndash; Anonymous</p>
       </div>
     </div>
   );
