@@ -19,21 +19,28 @@ const EmailSection = () => {
         </h5>
         <p className="text-[#ADB7BE] mb-4 max-w-md">
           {" "}
-          I&apos;m currently looking for new opportunities, my inbox is always
-          open. Whether you have a question or just want to say hi, I&apos;ll
-          try my best to get back to you!
+          Open to new opportunities! Drop me a message anytime, and I&apos;ll
+          get back to you as soon as i can!
         </p>
         <div className="socials flex flex-row gap-2">
-          <Link href="https://github.com/MouadhSaadaoui">
-            <Image src={GithubIcon} alt="Github Icon" />
-          </Link>
-          <Link href="https://www.linkedin.com/in/saadaoui-mouadh/">
-            <Image src={LinkedinIcon} alt="Linkedin Icon" />
-          </Link>
-          <Link href="mailto:saadaoui.mouadh@esprit.tn">
-            <Image src={MailIcon} alt="Mail Icon" />
-          </Link>
-        </div>
+  <Link href="https://github.com/MouadhSaadaoui" legacyBehavior>
+    <a target="_blank" rel="noopener noreferrer">
+      <Image src={GithubIcon} alt="Github Icon" />
+    </a>
+  </Link>
+  <Link href="https://www.linkedin.com/in/saadaoui-mouadh/" legacyBehavior>
+    <a target="_blank" rel="noopener noreferrer">
+      <Image src={LinkedinIcon} alt="Linkedin Icon" />
+    </a>
+  </Link>
+  <Link href="mailto:saadaoui.mouadh@esprit.tn" legacyBehavior>
+    <a>
+      <Image src={MailIcon} alt="Mail Icon" />
+    </a>
+  </Link>
+</div>
+
+
       </div>
     </section>
   );
